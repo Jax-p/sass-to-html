@@ -1,8 +1,8 @@
-# sass-to-html
+# Sass-to-html
 Sass-to-html provides a command-line sass compilation directly into an HTML file into a `<style>` tag. 
 
 ## Example
-You have to have one HTML input and one SCSS input _(which can @import more SCSS files)_.
+You have to have one HTML input and one SCSS input _(which can @import another SCSS files)_.
 ### Input
 index.html (without styles)
 ```html
@@ -27,6 +27,7 @@ body {
 sass-to-html 
 ```
 ### Result
+original index.html has been modified:
 ```
 <html>
 <head>
