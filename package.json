@@ -21,7 +21,7 @@
     "type": "git",
     "url": "https://github.com/Jax-p/sass-to-html"
   },
-  "keywords": [],
+  "keywords": ["sass","scss","css","bundler","html"],
   "author": "Jakub <Jax> Patočka",
   "license": "ISC"
 }
