@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "description": "Compiles SASS directly into an HTML file into a <style> tag",
   "main": "index.js",
+  "bin": {
+    "sass-to-html": "./index.js"
+  },
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.2.0",

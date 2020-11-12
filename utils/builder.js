@@ -24,15 +24,31 @@ const build =()=> {
 
 /** @param {string} css */
 const writeCssToHtml = (css) =>
-    new Promise(resolve=>{
+    new Promise((resolve,reject)=>{
         fs.readFile(program.html, 'utf8', (err,html)=>{
             err && error(err);
-            html = html.replace(/<style>([^<]+)<\/style>/g,`<style>${css.replace(/\r?\n|\r/g,"")}</style>`);
-            fs.writeFileSync(program.html,html);
-            log(`Output written to `+chalk.blue(program.html));
-            resolve();
-        });
+            try {
+                html = pasteCssToHtmlString(html,css);
+                fs.writeFileSync(program.html,html);
+                log(`Output written to `+chalk.blue(program.html));
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+        })
     });
+
+const pasteCssToHtmlString=(html, css)=> {
+    const hasStyleTag = html.search(/<style>([^<]+)<\/style>/g) !== -1;
+    const hasHeadTag = html.search("</head>") !== -1;
+    if (!hasStyleTag && !hasHeadTag)
+        error({message:`Neither <head> nor <style> was found in ${program.html}.`})
+
+    const styles = `<style>${css.replace(/\r?\n|\r/g,"")}</style>`;
+    return hasStyleTag
+        ? html.replace(/<style>([^<]+)<\/style>/g,styles)
+        : html.replace('</head>',`${styles}\n</head>`);
+};
 
 exports.watch = watchScss;
 exports.build = build;

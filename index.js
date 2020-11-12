@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { program } = require('commander');
 const { watch, build } = require('./utils/builder.js');
 const pjson = require('./package.json');
@@ -12,5 +13,9 @@ program
     .parse(process.argv);
 
 program.debug && console.log(program.opts());
-const start=()=> program.watch ? watch() : build();
+const start=()=> {
+    try { program.watch ? watch() : build(); }
+    catch (err) { error(err); }
+}
 start();
+
