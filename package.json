@@ -1,6 +1,6 @@
 {
   "name": "sass-to-html",
-  "version": "0.1.3",
+  "version": "0.1.21",
   "description": "Compiles SASS directly into an HTML file into a <style> tag",
   "main": "index.js",
   "bin": {
@@ -16,6 +16,10 @@
   "devDependencies": {},
   "scripts": {
     "start": "node index.js -w -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Jax-p/sass-to-html"
   },
   "keywords": [],
   "author": "Jakub <Jax> Patočka",
