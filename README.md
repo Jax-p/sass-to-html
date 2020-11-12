@@ -1,9 +1,52 @@
 # sass-to-html
 Sass-to-html provides a command-line sass compilation directly into an HTML file into a `<style>` tag. 
 
-## Usage
+## Example
+You have to have one HTML input and one SCSS input _(which can @import more SCSS files)_.
+### Input
+index.html (without styles)
+```html
+<html>
+<head>
+    <title>My great title</title>
+</head>
+<body>
+   <p>Hello world!</p>
+</body>
+</html>
 ```
-node index.js [options]
+style.scss
+```scss
+$primary: green;
+body {
+   color: $primary;
+}
+```
+### Command
+```
+sass-to-html 
+```
+### Result
+```
+<html>
+<head>
+    <title>My great title</title>
+    <style>body{color:green}</style>
+</head>
+<body>
+   <p>Hello world!</p>
+</body>
+</html>
+```
+
+## Usage
+After installation command `sass-to-html` should be available in your environment.
+```
+sass-to-html [options]
+```
+Or you can run it manually with absolute path
+```
+node path/to/sass-to-html/index.js [options]
 ```
 
 ### Options:
