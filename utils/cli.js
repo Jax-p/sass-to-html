@@ -11,10 +11,10 @@ const log = (msg) =>
         ? console.log(time(),msg)
         : console.log(msg);
 
-const error = (err, exit = false) => {
+const error = (err, exit = false, callback) => {
     log(chalk.red(program.debug ? err : err.message));
-    if (!program.watch || exit) process.exit(1);
-    watch();
+    (!program.watch || exit) && process.exit(1);
+    callback && callback();
 };
 
 exports.log = log;
